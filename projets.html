@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projets — Portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio BTS SIO SISR — Projets, stages, certifications, CV et lettre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="logo"></span><span class="brand-text">KHADRI Lukaz — BTS SIO SISR</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="parcours.html">Parcours</a>
+        <a href="projets.html">Projets</a>
+        <a href="stages.html">Stages</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="cv.html">CV</a>
+        <a href="lettre.html">Lettre</a>
+        <a href="https://lukaz-sio.github.io/DOCS/" target="_blank" rel="noopener" class="btn tiny primary">DOCS</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+
+    <section class="section">
+      <div class="container">
+        <h1>Projets</h1>
+        <p class="lead">Mes projets techniques (scripts, infra, sécurité, automatisation).</p>
+        <div id="projetsList" class="list">
+
+          <article class="item" style="--i:0">
+            <div class="thumb"><img src="assets/img/cropped-Logo-BTS-SIO-LDU.png" alt=""></div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+                <h3 style="margin:.2rem 0">Projet — Virtualisation & HA</h3>
+                <a class="btn tiny primary" href="details/projet-virtualisation-ha.html">Voir plus de détails</a>
+              </div>
+              <p class="meta">2025 (exemple)</p>
+              <p>Conception d'un cluster Proxmox avec stockage partagé et sauvegardes planifiées. Tests de bascule (HA) et restauration.</p>
+              <div class="row" style="margin-top:6px"><span class="badge">Infra</span><span class="badge">Proxmox</span></div>
+            </div>
+          </article>
+          <article class="item" style="--i:1">
+            <div class="thumb"><img src="assets/img/securite.svg" alt=""></div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+                <h3 style="margin:.2rem 0">Projet — Sécurité réseau & VLAN</h3>
+                <a class="btn tiny primary" href="details/projet-securite-vlan.html">Voir plus de détails</a>
+              </div>
+              <p class="meta">2025 (exemple)</p>
+              <p>Pare-feu pfSense, plan d'adressage, VLAN 10/20/30 et tests de performances.</p>
+              <div class="row" style="margin-top:6px"><span class="badge">Sécurité</span><span class="badge">VLAN</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+</main>
+  <footer class="footer">
+    <div class="container foot">
+      <div class="cols">
+        <div class="col" style="grid-column:span 8">
+          <h4>À propos</h4>
+          <p class="meta">Portfolio BTS SIO — option SISR. Projets, stages, certifications et documents.</p>
+        </div>
+      </div>
+      <div class="row right">
+        <div class="socials row">
+          <a href="#" title="LinkedIn" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7.5 0h3.8v2H12c.53-1 1.82-2.5 4.2-2.5 4.49 0 5.3 3 5.3 6.9V23h-4v-6.9c0 -1.64-.03-3.75-2.3-3.75-2.3 0-2.65 1.79-2.65 3.64V23h-4V8.5z"/></svg>
+          </a>
+        </div>
+        <small class="right" style="margin-left:12px">© <span id="year"></span> — Portfolio BTS SIO SISR</small>
+        <a class="btn tiny ghost" style="margin-left:12px" href="#top">↑ Haut de page</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js" defer></script>
+  
+</body>
+</html>
