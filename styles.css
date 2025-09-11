@@ -64,10 +64,17 @@ img{max-width:100%;display:block}
   transform: scaleX(0); transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-.nav-links a.active, .nav-links a:hover{color: var(--brand);}
-.nav-links a:hover::after {
+.nav-links a.active, .nav-links a:not(.btn):hover{color: var(--brand);}
+.nav-links a:not(.btn):hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+/* Style spécifique pour le bouton DOCS */
+.nav-links .btn-docs:hover {
+  transform: translateY(0) rotate(360deg); /* Annule le translate et ajoute la rotation */
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 0 12px 35px rgba(2,6,23,.1); /* Garde l'ombre au survol */
 }
 
 /* Buttons */
