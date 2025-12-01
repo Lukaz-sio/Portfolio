@@ -72,9 +72,9 @@ img{max-width:100%;display:block}
 
 /* Style spécifique pour le bouton DOCS */
 .nav-links .btn-docs:hover {
-  transform: translateY(0) rotate(360deg); /* Annule le translate et ajoute la rotation */
-  transition: transform 0.5s ease-in-out;
-  box-shadow: 0 12px 35px rgba(2,6,23,.1); /* Garde l'ombre au survol */
+  /* On combine la transformation de base avec l'animation au survol */
+  transform: translateY(-2px);
+  animation: glowing 2s infinite;
 }
 
 /* Buttons */
@@ -213,7 +213,7 @@ img{max-width:100%;display:block}
 
 /* Animation pour le curseur qui clignote */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
+  from, to { border-color: transparent; }
   50% { border-color: var(--text); }
 }
 
@@ -221,6 +221,12 @@ img{max-width:100%;display:block}
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes glowing {
+  0% { transform: scale(1); box-shadow: 0 0 3px var(--brand); }
+  50% { transform: scale(1.1); box-shadow: 0 0 15px 5px var(--brand); }
+  100% { transform: scale(1); box-shadow: 0 0 3px var(--brand); }
 }
 
 @media print {
