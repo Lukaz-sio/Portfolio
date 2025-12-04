@@ -21,7 +21,7 @@
         <a href="../stages.html">Stages</a>
         <a href="../certifications.html">Certifications</a>
         <a href="../cv.html">CV</a>
-        <a href="../lettre.html">Lettre</a>
+        <a href="../grille-evaluation.html">Grille d'évaluation</a>
         <a href="https://lukaz-sio.github.io/DOCS/" target="_blank" rel="noopener" class="btn tiny primary btn-docs">DOCS</a>
       </nav>
     </div>
@@ -40,6 +40,18 @@
           <article class="card">
             <h3>Compétences visées</h3>
             <ul><li>Systèmes</li><li>Maintenance</li><li>(à compléter)</li></ul>
+          </article>
+          <article class='card'>
+            <h3>Outils / Technos</h3>
+            <ul><li>Windows Server</li><li>Active Directory</li><li>Scripts (PowerShell/Bash)</li><li>(à compléter)</li></ul>
+          </article>
+          <article class='card'>
+            <h3>Missions / Réalisations</h3>
+            <ul><li>Maintenance préventive du parc informatique</li><li>Gestion des comptes utilisateurs et des droits d'accès</li><li>Déploiement de mises à jour (WSUS)</li><li>Participation à la supervision des serveurs</li></ul>
+          </article>
+          <article class='card'>
+            <h3>Ressources / Preuves</h3>
+            <button id="open-gallery-btn" class="btn primary">Voir les captures d'écran</button>
           </article>
         </div>
       </div>
@@ -60,5 +72,76 @@
     </div>
   </footer>
   <script src="../script.js" defer></script>
+
+  <!-- La galerie d'images (modale) -->
+  <div id="image-gallery-modal" class="modal-gallery">
+    <span class="close-gallery">&times;</span>
+    <div class="modal-gallery-content">
+      <h4 style="margin-top:0">Captures d'écran du stage</h4>
+      <div class="gallery-images">
+        <img src="../assets/img/VIGN_LANN_V2.png" alt="Logo LTC">
+        <img src="../assets/img/gsb.png" alt="Exemple 1">
+        <img src="../assets/img/securite.svg" alt="Exemple 2">
+        <img src="../assets/img/logo.png" alt="Exemple 3">
+        <img src="../assets/img/VIGN_LANN_V2.png" alt="Logo LTC (copie)">
+        <img src="../assets/img/gsb.png" alt="Exemple 1 (copie)">
+        <img src="../assets/img/securite.svg" alt="Exemple 2 (copie)">
+        <img src="../assets/img/logo.png" alt="Exemple 3 (copie)">
+        <img src="../assets/img/proxmox.svg" alt="Exemple 4">
+      </div>
+    </div>
+  </div>
+
+  <!-- Visionneuse d'image (modale pour le zoom) -->
+  <div id="image-viewer-modal" class="image-viewer" style="display: none;">
+    <span class="close-viewer">&times;</span>
+    <img class="image-viewer-content" id="zoomed-image">
+  </div>
+
+  <script>
+    // Script pour la galerie d'images
+    const modal = document.getElementById("image-gallery-modal");
+    const btn = document.getElementById("open-gallery-btn");
+    const span = document.getElementsByClassName("close-gallery")[0];
+
+    btn.onclick = () => { 
+      modal.style.display = "flex"; 
+      modal.style.alignItems = "center";
+      modal.style.justifyContent = "center";
+      document.body.classList.add('modal-open');
+    }
+
+    const closeModal = () => {
+      modal.style.display = "none";
+      document.body.classList.remove('modal-open');
+    }
+
+    span.onclick = closeModal;
+    window.onclick = (event) => { 
+      if (event.target == modal) {
+        closeModal();
+      } 
+    }
+
+    // Script pour la visionneuse d'image (zoom)
+    const imageViewer = document.getElementById('image-viewer-modal');
+    const zoomedImage = document.getElementById('zoomed-image');
+    const galleryImages = document.querySelectorAll('.gallery-images img');
+    const closeViewerBtn = document.querySelector('.close-viewer');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        imageViewer.style.display = 'flex';
+        zoomedImage.src = img.src;
+      });
+    });
+
+    const closeViewer = () => {
+      imageViewer.style.display = 'none';
+    }
+
+    closeViewerBtn.onclick = closeViewer;
+    imageViewer.onclick = (event) => { if (event.target === imageViewer) closeViewer(); };
+  </script>
 </body>
 </html>

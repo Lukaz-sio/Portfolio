@@ -21,7 +21,7 @@
         <a href="../stages.html">Stages</a>
         <a href="../certifications.html">Certifications</a>
         <a href="../cv.html">CV</a>
-        <a href="../lettre.html">Lettre</a>
+        <a href="../grille-evaluation.html">Grille d'évaluation</a>
         <a href="https://lukaz-sio.github.io/DOCS/" target="_blank" rel="noopener" class="btn tiny primary btn-docs">DOCS</a>
       </nav>
     </div>
@@ -34,19 +34,43 @@
           <article class="card">
             <h2 style="margin-top:0">Projet — AP GSB</h2>
             <p class="meta">2025 · Atelier Professionnel</p>
-            <img style="border-radius:12px;margin:10px 0" src="../assets/img/gsb.png" alt="Logo AP GSB">
-            <p>Projet réalisé dans le cadre de l'atelier professionnel GSB (Galaxy-Swiss Bourdin).</p>
+            <img style="border-radius:12px;margin:10px 0; aspect-ratio: 16/9; object-fit: cover; background-color: #f0f0f0;" src="../assets/img/gsb.png" alt="Logo AP GSB">
+            <p>Dans le cadre de l'atelier professionnel GSB (Galaxy-Swiss Bourdin), il a été demandé de déployer et sécuriser l'infrastructure d'un laboratoire pharmaceutique. L'objectif principal était de concevoir une architecture réseau robuste, segmentée et hautement disponible, hébergée sur un hyperviseur VMware ESXi distant.</p>
+            <p>Le projet visait à mettre en place une segmentation stricte via plusieurs VLANs et pare-feux (Stormshield et OPNsense) pour isoler les différents environnements (DMZ, serveurs, clients). Il incluait également le déploiement de services essentiels comme l'Active Directory, le DNS/DHCP, ainsi que des solutions de supervision (Zabbix, Wazuh) et de gestion de parc (GLPI).</p>
           </article>
           <article class="card">
             <h3>Compétences visées</h3>
-            <ul><li>Développement d'application</li><li>Gestion de projet</li><li>Base de données</li></ul>
+            <ul>
+              <li>Administration de pare-feu (Stormshield, OPNsense)</li>
+              <li>Segmentation réseau multi-VLAN</li>
+              <li>Virtualisation d'infrastructure (VMware ESXi)</li>
+              <li>Mise en place de la haute disponibilité (Load Balancing, Cluster SQL)</li>
+              <li>Déploiement de services d'infrastructure (AD, DNS, DHCP, IPAM)</li>
+              <li>Supervision système et réseau (Zabbix, Wazuh, GLPI)</li>
+            </ul>
           </article>
-          <article class='card'><h3>Outils / Technos</h3><ul><li>PHP</li><li>MySQL</li><li>HTML/CSS</li></ul></article>
-          <article class='card'><h3>Contenu / Modules</h3><ul><li>Développement back-end</li><li>Interface front-end</li><li>Gestion des utilisateurs</li></ul></article>
-          <article class='card'><h3>Preuve / Ressource</h3><a class='btn primary' href='../assets/pdf/CV.pdf' target='_blank' rel='noopener'>Ouvrir le PDF</a></article>
+          <article class='card'>
+            <h3>Outils / Technos</h3>
+            <ul><li>VMware ESXi</li><li>Stormshield</li><li>OPNsense</li><li>Windows Server</li><li>Linux (Debian)</li><li>Reverse Proxy (HAProxy/Nginx)</li><li>Zabbix, Wazuh, GLPI</li></ul>
+          </article>
+          <article class='card'>
+            <h3>Étapes & Réalisations</h3>
+            <ul>
+              <li>Conception du plan d'adressage et de l'architecture VLAN</li>
+              <li>Déploiement et configuration des pare-feux et des règles de filtrage</li>
+              <li>Installation des serveurs virtualisés (Web, SQL, AD, etc.)</li>
+              <li>Mise en place du load balancing pour les serveurs web</li>
+              <li>Configuration des outils de monitoring et de gestion de parc</li>
+            </ul>
+          </article>
+          <article class='card'>
+            <h3>Ressources / Preuves</h3>
+            <button id="open-gallery-btn" class="btn primary">Voir les captures d'écran</button>
+          </article>
         </div>
       </div>
     </section>
+
   </main>
   <footer class="footer">
     <div class="container foot">
@@ -68,6 +92,80 @@
     </div>
   </footer>
   <script src="../script.js" defer></script>
+
+  <!-- La galerie d'images (modale) - Placer ici, juste avant la fin du body -->
+  <div id="image-gallery-modal" class="modal-gallery">
+    <span class="close-gallery">&times;</span>
+    <div class="modal-gallery-content">
+      <h4 style="margin-top:0">Captures d'écran du projet GSB</h4>
+      <div class="gallery-images">
+        <img src="../assets/img/gsb.png" alt="Schéma d'infrastructure GSB">
+        <img src="../assets/img/securite.svg" alt="Exemple de segmentation VLAN">
+        <img src="../assets/img/logo-geltram.png" alt="Logo Geltram">
+        <img src="../assets/img/logo.png" alt="Exemple de service applicatif">
+        <img src="../assets/img/proxmox.svg" alt="Exemple d'hyperviseur">
+        <!-- Images ajoutées pour le test de scroll -->
+        <img src="../assets/img/gsb.png" alt="Schéma d'infrastructure GSB (copie)">
+        <img src="../assets/img/securite.svg" alt="Exemple de segmentation VLAN (copie)">
+        <img src="../assets/img/logo-geltram.png" alt="Logo Geltram (copie)">
+        <img src="../assets/img/logo.png" alt="Exemple de service applicatif (copie)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Visionneuse d'image (modale pour le zoom) -->
+  <div id="image-viewer-modal" class="image-viewer" style="display: none;">
+    <span class="close-viewer">&times;</span>
+    <img class="image-viewer-content" id="zoomed-image">
+  </div>
+
+  <script>
+    // Script pour la galerie d'images
+    const modal = document.getElementById("image-gallery-modal");
+    const btn = document.getElementById("open-gallery-btn");
+    const span = document.getElementsByClassName("close-gallery")[0];
+
+    btn.onclick = () => { 
+      // On utilise 'flex' pour afficher la modale et la centrer
+      modal.style.display = "flex"; 
+      modal.style.alignItems = "center";
+      modal.style.justifyContent = "center";
+      document.body.classList.add('modal-open'); // Bloque le scroll du body
+    }
+
+    const closeModal = () => {
+      modal.style.display = "none";
+      document.body.classList.remove('modal-open'); // Réactive le scroll du body
+    }
+
+    span.onclick = closeModal;
+    window.onclick = (event) => { 
+      if (event.target == modal) {
+        closeModal();
+      } 
+    }
+
+    // Script pour la visionneuse d'image (zoom)
+    const imageViewer = document.getElementById('image-viewer-modal');
+    const zoomedImage = document.getElementById('zoomed-image');
+    const galleryImages = document.querySelectorAll('.gallery-images img');
+    const closeViewerBtn = document.querySelector('.close-viewer');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        imageViewer.style.display = 'flex';
+        zoomedImage.src = img.src;
+      });
+    });
+
+    const closeViewer = () => {
+      imageViewer.style.display = 'none';
+    }
+
+    closeViewerBtn.onclick = closeViewer;
+    imageViewer.onclick = (event) => { if (event.target === imageViewer) closeViewer(); };
+  </script>
+
 </body>
 
 </html>

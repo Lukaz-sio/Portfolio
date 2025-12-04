@@ -151,6 +151,9 @@ img{max-width:100%;display:block}
 }
 .item .thumb img {
   animation: pulse 3s ease-in-out infinite;
+  /* Ajout pour s'assurer que les images larges sont bien contenues */
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .item .thumb img.contain {
@@ -243,4 +246,78 @@ main{
 /* Sticky footer for homepage */
 .home-page { 
   /* On garde la classe pour d'éventuels styles spécifiques, mais on retire le centrage */
+}
+
+/* Classe pour bloquer le scroll du body quand une modale est ouverte */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ===== Galerie d'images (Modale) ===== */
+.modal-gallery {
+  display: none; /* Caché par défaut */
+  position: fixed; /* Reste en place */
+  z-index: 2000; /* Au-dessus de tout (header = 1000) */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Active le scroll si nécessaire */
+  background-color: rgba(0,0,0,0.85); /* Fond noir semi-transparent */
+}
+
+.modal-gallery-content {
+  position: relative;
+  padding: 20px;
+  background-color: var(--surface);
+  border-radius: 12px;
+  max-width: 85%;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  animation: slideUp 0.4s ease-out;
+}
+
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.gallery-images img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.gallery-images img:hover { transform: scale(1.05); }
+.close-gallery { color: #fff; position: absolute; top: 15px; right: 35px; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2001; }
+.close-gallery:hover, .close-gallery:focus { color: #bbb; text-decoration: none; }
+
+/* ===== Visionneuse d'image (Modale par-dessus la galerie) ===== */
+.image-viewer {
+  display: none; /* Caché par défaut */
+  position: fixed;
+  z-index: 2002; /* Au-dessus de la galerie (2000) */
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInAnimation 0.3s ease;
+}
+
+.image-viewer-content {
+  max-width: 90%;
+  max-height: 90%;
+  animation: slideUp 0.4s ease-out;
+}
+
+.close-viewer {
+  position: absolute;
+  top: 15px; right: 35px;
+  color: #fff;
+  font-size: 40px; font-weight: bold;
+  cursor: pointer;
 }
